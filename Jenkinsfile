@@ -43,7 +43,7 @@ pipeline {
         
         stage('Run') {
             steps {
-                bat '"%JAVA_HOME%\\bin\\java" -jar build\\jar\\MyApplication.jar '${params.wzrost}' '${params.waga}''
+                bat '"%JAVA_HOME%\\bin\\java" -jar build\\jar\\MyApplication.jar ${params.wzrost} ${params.waga}'
             }
         }
     }
