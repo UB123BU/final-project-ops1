@@ -46,6 +46,12 @@ pipeline {
                 echo "Running version ${env.BUILD_ID}"
             }
         }
- 
-}
     }
+        post {
+        failure {
+            emailext body: "Wystąpił błąd podczas wykonywania pipelinu",                                  
+                    subject: "BŁĄD",                                  
+                    to: "kapidospamu@gmail.com"
+        }
+        }
+}
