@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     parameters {
-        integer(name: 'Podaj wzrost w cm:', defaultValue: '', description: 'wzrost')
-        integer(name: 'Podaj wagę w kg:', defaultValue: '', description: 'waga')
+        string(name: 'Podaj wzrost w cm:', defaultValue: '', description: 'wzrost')
+        string(name: 'Podaj wagę w kg:', defaultValue: '', description: 'waga')
     }
     
     tools {
