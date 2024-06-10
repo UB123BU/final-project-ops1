@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     parameters {
-        string(name: 'wzrost', defaultValue: '', description: 'wzrost')
-        string(name: 'waga', defaultValue: '', description: 'waga')
+        string(name: 'wzrost', defaultValue: '', description: 'wzrost w cm')
+        string(name: 'waga', defaultValue: '', description: 'waga w kg')
     }
     
     tools {
@@ -43,8 +43,7 @@ pipeline {
         
         stage('Run') {
             steps {
-                bat '"%JAVA_HOME%\\bin\\java" -jar build\\jar\\MyApplication.jar'
-                bat 'java -jar MyApplication.jar "${params.wzrost}" "${params.waga}"'
+                bat '"%JAVA_HOME%\\bin\\java" -jar build\\jar\\MyApplication.jar "${params.wzrost}" "${params.waga}"'
             }
         }
     }
