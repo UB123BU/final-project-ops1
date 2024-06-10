@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     parameters {
-        string(name: 'wzrost:', defaultValue: '', description: 'wzrost')
-        string(name: 'waga:', defaultValue: '', description: 'waga')
+        string(name: 'wzrost', defaultValue: '', description: 'wzrost')
+        string(name: 'waga', defaultValue: '', description: 'waga')
     }
     
     tools {
