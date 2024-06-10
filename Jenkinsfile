@@ -41,11 +41,6 @@ pipeline {
                 bat '"%JAVA_HOME%\\bin\\java" -jar build\\jar\\MyApplication.jar'
             }
         }
-        stage('Version') {
-            steps {
-                echo "Running version ${env.BUILD_ID}"
-            }
-        }
         stage('Pobranie Informacji o Wersji') {
             steps {
                 echo "Pobrana wersja: ${env.GIT_COMMIT}" // Bezpośrednio użyj zmiennej GIT_COMMIT
