@@ -41,5 +41,10 @@ pipeline {
                 bat '"%JAVA_HOME%\\bin\\java" -jar build\\jar\\MyApplication.jar'
             }
         }
+        stage('Version') {
+            steps {
+                echo "Running ${env.BUILD_ID}"
+            }
+        }
     }
 }
