@@ -48,19 +48,10 @@ pipeline {
         }
     }
         post {     
-            success {       
-                script {         
-                    def previousVersion = getPreviousVersion()         
-                    if (previousVersion) {           
-                        echo "Wycofywanie do poprzedniej wersji: ${previousVersion}"         
-                        bat """           
-                        powershell -Command "git reset --hard ${previousVersion}"           
-                        powershell -Command "git push --force"           
-                        """         
-                    } else {           
-                        echo "Nie znaleziono poprzedniej wersji do wycofania."         
-                    }       
-                }     
-            }   
+            failure {       
+            emailext body: "Wystąpił błąd podczas wykonywania pipelinu",                
+                subject: "BŁĄD",                
+                to: "kapidospamu@gmail.com"
+            }
         }
-    }
+}
