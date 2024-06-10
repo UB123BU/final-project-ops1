@@ -32,13 +32,13 @@ pipeline {
         stage('Package') {
             steps {
                 bat 'if not exist build\\jar mkdir build\\jar'
-                bat 'cd build\\classes && "%JAVA_HOME%\\bin\\jar" cvmf MANIFEST.MF ..\\jar\\MyApplication.jar *'
+                bat 'cd build\\classes && "%JAVA_HOME%\\bin\\jar" cvmf MANIFEST.MF ..\\jar\\Final-app.jar *'
             }
         }
         
         stage('Run') {
             steps {
-                bat '"%JAVA_HOME%\\bin\\java" -jar build\\jar\\MyApplication.jar'
+                bat '"%JAVA_HOME%\\bin\\java" -jar build\\jar\\Final-app.jar'
             }
         }
         stage('Pobranie Informacji o Wersji') {
