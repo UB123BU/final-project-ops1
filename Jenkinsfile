@@ -48,7 +48,6 @@ pipeline {
         }
         stage('Send Email Notifications') {
             steps {
-                // Configure email settings (replace with your actual values)
                 emailext(
                     body: '''
                         Job '${currentBuild.fullDisplayName}' (${currentBuild.number}) completed with status: ${currentBuild.result}
@@ -56,13 +55,10 @@ pipeline {
                         Console output: ${jobUrl}console
                     ''',
                     subject: '[Jenkins] Job Status Notification: ${currentBuild.fullDisplayName} (#${currentBuild.number})',
-                    recipientRecipients: 'k.kapitula.063@studms.ug.edu.pl', // Replace with your recipient email(s)
-                    successCondition: 'completed', // Send on successful builds only (optional)
-                    trigger: 'unstable', // Send on unstable or failed builds (optional)
-                    replyTo: 'kapidospamu@gmail.com', // Replace with your reply-to address (optional)
+                    recipientRecipients: 'k.kapitula.063@studms.ug.edu.pl',
+                    replyTo: 'kapidospamu@gmail.com',
                     attachBuildLog: true, // Attach build logs to the email (optional)
-                    mimeType: 'text/html', // Send email in HTML format (optional)
-                    from: 'kapidospamu@gmail.com' // Replace with your sender email address (optional)
+                    from: 'kapidospamu@gmail.com'
                 )
     }
 }
