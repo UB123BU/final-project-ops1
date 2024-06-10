@@ -15,7 +15,7 @@ pipeline {
     }
     
     stages {
-        stage('Information') {
+        stage('Welcome') {
             steps {
                 echo "Hello $USERNAME, you are working on $BRANCH branch"
             }
