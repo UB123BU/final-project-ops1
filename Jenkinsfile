@@ -55,9 +55,9 @@ pipeline {
                         Console output: ${jobUrl}console
                     ''',
                     subject: '[Jenkins] Job Status Notification: ${currentBuild.fullDisplayName} (#${currentBuild.number})',
-                    recipientRecipients: 'k.kapitula.063@studms.ug.edu.pl',
+                    recipientProviders: 'k.kapitula.063@studms.ug.edu.pl',
                     replyTo: 'kapidospamu@gmail.com',
-                    attachBuildLog: true, // Attach build logs to the email (optional)
+                    attachLog: true,
                     from: 'kapidospamu@gmail.com'
                 )
     }
