@@ -48,10 +48,7 @@ pipeline {
         }
         stage('Pobranie Informacji o Wersji') {
             steps {
-                bat 'GIT_VERSION=%env.GIT_COMMIT% echo "Pobrana wersja: %GIT_VERSION%"'
-                script {
-                 VERSION = "%env.GIT_COMMIT%" // Opcja 1
-                }
+                echo "Pobrana wersja: ${env.GIT_COMMIT}" // Bezpośrednio użyj zmiennej GIT_COMMIT
             }
         }
     }
