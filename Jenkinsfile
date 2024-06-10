@@ -49,9 +49,6 @@ pipeline {
     }
         post {     
             success {       
-                emailext body: "Wystąpił błąd podczas wykonywania pipelinu",                
-                    subject: "BŁĄD",                
-                    to: "kapidospamu@gmail.com"    
                 script {         
                     def previousVersion = getPreviousVersion()         
                     if (previousVersion) {           
