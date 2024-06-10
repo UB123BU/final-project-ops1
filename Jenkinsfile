@@ -1,6 +1,6 @@
 pipeline {
     agent any
-    
+
     tools {
         jdk 'Java'
     }
@@ -47,11 +47,23 @@ pipeline {
             }
         }
     }
-        post {
-        failure {
-            emailext body: "Wystąpił błąd podczas wykonywania pipelinu",                                  
-                    subject: "BŁĄD",                                  
-                    to: "kapidospamu@gmail.com"
+        post {     
+            failure {       
+                emailext body: "Wystąpił błąd podczas wykonywania pipelinu",                
+                    subject: "BŁĄD",                
+                    to: "kapidospamu@gmail.com"    
+                script {         
+                    def previousVersion = getPreviousVersion()         
+                    if (previousVersion) {           
+                        echo "Wycofywanie do poprzedniej wersji: ${previousVersion}"         
+                        bat """           
+                        powershell -Command "git reset --hard ${previousVersion}"           
+                        powershell -Command "git push --force"           
+                        """         
+                    } else {           
+                        echo "Nie znaleziono poprzedniej wersji do wycofania."         
+                    }       
+                }     
+            }   
         }
-        }
-}
+    }
