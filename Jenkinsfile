@@ -1,10 +1,5 @@
 pipeline {
     agent any
-
-    parameters {
-        string(name: 'wzrost', defaultValue: '', description: 'wzrost w cm')
-        string(name: 'waga', defaultValue: '', description: 'waga w kg')
-    }
     
     tools {
         jdk 'Java'
@@ -43,8 +38,14 @@ pipeline {
         
         stage('Run') {
             steps {
-                bat '"%JAVA_HOME%\\bin\\java" -jar build\\jar\\MyApplication.jar %${params.wzrost}% %${params.waga}%'
+                bat '"%JAVA_HOME%\\bin\\java" -jar build\\jar\\MyApplication.jar'
             }
         }
+        stage('Version') {
+            steps {
+                echo “${env.BUILD_ID}”
+            }
+        }
+        stage 
     }
 }
