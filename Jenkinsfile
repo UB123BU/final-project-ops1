@@ -43,7 +43,7 @@ pipeline {
         }
         stage('Version') {
             steps {
-                echo "Running ${env.BUILD_ID}"
+                echo "Running version ${env.BUILD_ID}"
             }
         }
  
