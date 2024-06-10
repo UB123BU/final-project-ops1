@@ -18,6 +18,8 @@ pipeline {
         stage('Information') {
             steps {
                 echo "Hello $USERNAME, you are working on $BRANCH branch"
+            }
+        }
         stage('Checkout') {
             steps {
                 git url: 'https://github.com/UB123BU/final-project.git', branch: 'main'
