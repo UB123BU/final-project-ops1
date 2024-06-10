@@ -46,20 +46,6 @@ pipeline {
                 echo "Running ${env.BUILD_ID}"
             }
         }
-        stage('Send Email Notifications') {
-            steps {
-                emailext(
-                    body: '''
-                        Job '${currentBuild.fullDisplayName}' (${currentBuild.number}) completed with status: ${currentBuild.result}
  
-                        Console output: ${jobUrl}console
-                    ''',
-                    subject: '[Jenkins] Job Status Notification: ${currentBuild.fullDisplayName} (#${currentBuild.number})',
-                    recipientProviders: 'k.kapitula.063@studms.ug.edu.pl',
-                    replyTo: 'kapidospamu@gmail.com',
-                    attachLog: true,
-                    from: 'kapidospamu@gmail.com'
-                )
-    }
 }
-    }}
+    }
