@@ -1,6 +1,11 @@
 pipeline {
     agent any
 
+    parameters {
+        string(name: 'USERNAME', defaultValue: '', description: 'Podaj swój username')
+        choice(name: 'BRANCH', choices: ['main'], description: '')
+    }
+    
     tools {
         jdk 'Java'
     }
@@ -10,6 +15,9 @@ pipeline {
     }
     
     stages {
+        stage('Information') {
+            steps {
+                echo "Hello $USERNAME, you are working on $BRANCH branch"
         stage('Checkout') {
             steps {
                 git url: 'https://github.com/UB123BU/final-project.git', branch: 'main'
@@ -43,7 +51,7 @@ pipeline {
         }
         stage('Pobranie Informacji o Wersji') {
             steps {
-                echo "Pobrana wersja: ${env.GIT_COMMIT}" // Bezpośrednio użyj zmiennej GIT_COMMIT
+                echo "Pobrana wersja: ${env.GIT_COMMIT}"
             }
         }
     }
